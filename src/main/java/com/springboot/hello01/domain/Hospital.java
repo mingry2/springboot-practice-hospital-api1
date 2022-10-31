@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor // 기본생성자
 public class Hospital {
     private int id;
     private String openServiceName;

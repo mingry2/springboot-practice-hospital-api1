@@ -1,10 +1,13 @@
 package com.springboot.hello01.parser;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class ReadLineContext<T> {
 
@@ -20,8 +23,13 @@ public class ReadLineContext<T> {
                 new FileReader(filename)
         );
         String str;
+        reader.readLine();
         while ((str = reader.readLine()) != null) {
-            result.add(parser.parse(str));
+            try {
+                result.add(parser.parse(str));
+            } catch (Exception e) {
+                System.out.printf("파싱 중 문제가 생겨 이 라인은 넘어갑니다. 파일내용: %s\n", str);
+            }
         }
         reader.close();
         return result;
