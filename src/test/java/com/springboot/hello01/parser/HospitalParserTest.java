@@ -1,5 +1,6 @@
 package com.springboot.hello01.parser;
 
+import com.springboot.hello01.dao.HospitalDao;
 import com.springboot.hello01.domain.Hospital;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,19 @@ class HospitalParserTest {
 
     @Autowired
     ReadLineContext<Hospital> hospitalReadLineContext;
+
+    @Autowired
+    HospitalDao hospitalDao;
+
+    @Test
+    @DisplayName("Hospital이 insert가 잘 되는지")
+    void name() {
+        HospitalParser hp = new HospitalParser();
+        Hospital hospital = hp.parse(line1);
+        hospitalDao.add(hospital);
+        // get이 없어서 assert는 눈으로
+
+    }
 
     @Test
     @DisplayName("10만건 이상 데이터가 파싱 되는지")
