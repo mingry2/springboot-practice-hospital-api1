@@ -27,10 +27,12 @@ class HospitalParserTest {
     @Test
     @DisplayName("Hospital이 insert가 잘 되는지")
     void name() {
+        hospitalDao.deleteAll();
+        assertEquals(0, hospitalDao.getCount());
         HospitalParser hp = new HospitalParser();
         Hospital hospital = hp.parse(line1);
         hospitalDao.add(hospital);
-        // get이 없어서 assert는 눈으로
+        assertEquals(1, hospitalDao.getCount());
 
     }
 
