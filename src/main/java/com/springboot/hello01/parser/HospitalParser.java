@@ -29,7 +29,7 @@ public class HospitalParser implements Parser<Hospital> {
         //(52.29, hospital.getTotalAreaSize()); // col:33
 
         String[] row = str.split("\",\"");
-        System.out.println(Arrays.toString(row));
+//        System.out.println(Arrays.toString(row));
 
         Hospital hospital = new Hospital();
         // String에서 int로 파싱
