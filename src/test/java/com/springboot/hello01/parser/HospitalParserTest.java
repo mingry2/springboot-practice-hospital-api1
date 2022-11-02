@@ -59,8 +59,8 @@ class HospitalParserTest {
     @Test
     @DisplayName("10만건 이상 데이터가 파싱 되는지")
     void oneHundreadThousandRows() throws IOException {
-        // 서버환경에서 build 할때 에러가 날 수 있음
-        // 어디에서든지 실행 할 수 있게 짜는 것이 목표
+//         //서버환경에서 build 할때 에러가 날 수 있음
+//         //어디에서든지 실행 할 수 있게 짜는 것이 목표
 //        hospitalDao.deleteAll();
 //        String filename = "D:\\workspace\\fulldata_01_01_02_P_의원1.csv";
 //        int cnt = this.hospitalService.insertLargeVolumeHospitalData(filename);
