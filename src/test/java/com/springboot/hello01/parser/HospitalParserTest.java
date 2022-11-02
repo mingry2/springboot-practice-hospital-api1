@@ -2,6 +2,7 @@ package com.springboot.hello01.parser;
 
 import com.springboot.hello01.dao.HospitalDao;
 import com.springboot.hello01.domain.Hospital;
+import com.springboot.hello01.service.HospitalService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ class HospitalParserTest {
 
     @Autowired
     HospitalDao hospitalDao;
+
+    @Autowired
+    HospitalService hospitalService;
 
     @Test
     @DisplayName("Hospital이 insert가 잘 되는지")
@@ -57,14 +61,12 @@ class HospitalParserTest {
     void oneHundreadThousandRows() throws IOException {
         // 서버환경에서 build 할때 에러가 날 수 있음
         // 어디에서든지 실행 할 수 있게 짜는 것이 목표
+        hospitalDao.deleteAll();
         String filename = "D:\\workspace\\fulldata_01_01_02_P_의원1.csv";
-        List<Hospital> hospitalList = hospitalReadLineContext.readByLine(filename);
-        assertTrue(hospitalList.size() > 10000);
-        assertTrue(hospitalList.size() > 100000);
-        for (int i = 0; i < 10; i++) {
-            System.out.println(hospitalList.get(i).getHospitalName());
-        }
-        System.out.printf("파싱된 데이터 개수: %d", hospitalList.size());
+        int cnt = this.hospitalService.insertLargeVolumeHospitalData(filename);
+        assertTrue(cnt > 1000);
+        assertTrue(cnt > 10000);
+        System.out.printf("파싱된 데이터 개수: %d", cnt);
     }
 
     @Test
