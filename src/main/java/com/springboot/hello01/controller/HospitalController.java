@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v2/hospital")
+@RequestMapping("/api/v1/hospital")
 @Slf4j
 public class HospitalController {
 
